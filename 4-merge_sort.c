@@ -1,68 +1,67 @@
 #include <stdio.h> 
 #include <stdlib.h>
   
-//CÓDIGO MERGESORT  
+//MERGESORT  CODE
   
-void merge_sort(int numeros[], int couter1, int counter2); 
-void executar_merge(int numeros[], int counter11, int counter12, int counter22, int counter21); 
+void merge_sort(int num[], int couter1, int counter2); 
+void executar_merge(int num[], int counter11, int counter12, int counter22, int counter21); 
   
 int main(){ 
-    int numeros[100], total_count, contador1; 
+    int num[100], total_count, count1; 
     
 printf("=-=-=-=,MERGE_SORT=-=-=-=\n");
-printf("Quantos numeros deseja inserir? \n"); 
+printf("\nHow many numbers do you want to enter? "); 
 scanf("%d", &total_count); 
     
-printf("Por favor digite %d de inteiros que devem ser ordenados.\n", total_count); 
+printf("Type %d int numbers to be sorted.\n", total_count); 
     
-    //pegar a quantidade de numeros e guardar nas posições
-    for(contador1 = 0; contador1 < total_count; contador1++) 
-        scanf("%d", &numeros[contador1]); 
+   //get the quantity of num and store it in the positions
+    for(count1 = 0; count1 < total_count; count1++) 
+        scanf("%d", &num[count1]); 
         
-    //exibir os elementos ordenados
-    merge_sort(numeros, 0, total_count - 1); 
-    printf("\nNumeros em ordem crescente:\n"); 
-    for(contador1 = 0; contador1 < total_count; contador1++) 
-        printf("%d\n", numeros[contador1]); 
+    //display ordered elements
+    merge_sort(num, 0, total_count - 1); 
+    printf("\nNumbers in ascending order:\n"); 
+    for(count1 = 0; count1 < total_count; count1++) 
+        printf("%d\n", num[count1]); 
   
     return 0; 
 } 
   
-void merge_sort(int numeros[], int contador1, int contador2){ //montar a operação
+void merge_sort(int num[], int count1, int count2){ //set up the operation
     int mid;
     
-    /*divide os numeros em pequenas partes para fazer a comparação. assim que é comparada,
-    realiza uma ação, a troca.*/
-    if(contador1 < contador2){ 
-        mid = (contador1 + contador2) / 2; //divide os dados para fazer organizações pequenas para se tornar mais rápida  
-        merge_sort(numeros, contador1, mid); 
-        merge_sort(numeros, mid + 1, contador2); 
-        executar_merge(numeros, contador1, mid, mid + 1, contador2); 
+    /*divide the num into small parts to make the comparison. as soon as it is compared,
+    performs an action, the exchange.*/
+    if(count1 < count2){ 
+        mid = (count1 + count2) / 2; //splits the data to make small organizations to become faster
+        merge_sort(num, count1, mid); 
+        merge_sort(num, mid + 1, count2); 
+        executar_merge(num, count1, mid, mid + 1, count2); 
     } 
 } 
 
-void executar_merge(int numeros[], int contador11, int contador12, int contador22, int contador21){ //executa a operação
+void executar_merge(int num[], int count11, int count12, int count22, int count21){ //execute the operation
     int temp_num[50]; 
     int c1, c2, c3; 
-    c1 = contador11; //comparação dos numeros
-    c2 = contador22; 
+    c1 = count11; //comparing numbers
+    c2 = count22; 
     c3 = 0; 
     
-    //enquanto o numero for maior, ele vai comparando para achar o menor
-    while(c1 <= contador12 && c2 <= contador21){ //comparação
-        if(numeros[c1] < numeros[c2]) //se o primeiro numero for menor que o segundo, realiza a troca
-            temp_num[c3++] = numeros[c1++]; 
+    // as long as the number is larger, it compares to find the smallest
+    while(c1 <= count12 && c2 <= count21){ //comparison
+        if(num[c1] < num[c2]) //if the first number is smaller than the second, perform the exchange
+            temp_num[c3++] = num[c1++]; 
         else 
-            temp_num[c3++] = numeros[c2++]; //senão, mantem a posição
-    } 
+            temp_num[c3++] = num[c2++]; //otherwise, keep the position
     
-    //comparar com os demais numeros separados e mudar de posição
-    //só terminará o while quando todos estiverem em suas posições
+    //compare with the others separately and change position
+    // the while will only end when everyone is in their positions
 
-    while(c1 <= contador12) 
-        temp_num[c3++] = numeros[c1++]; 
-    while(c2 <= contador21) 
-        temp_num[c3++] = numeros[c2++]; 
-    for(c1 = contador11, c2 = 0; c1 <= contador21; c1++, c2++) 
-        numeros[c1] = temp_num[c2]; 
+    while(c1 <= count12) 
+        temp_num[c3++] = num[c1++]; 
+    while(c2 <= count21) 
+        temp_num[c3++] = num[c2++]; 
+    for(c1 = count11, c2 = 0; c1 <= count21; c1++, c2++) 
+        num[c1] = temp_num[c2]; 
 }

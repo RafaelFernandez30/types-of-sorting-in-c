@@ -13,7 +13,7 @@ printf("=-=-=-=BUBBLE_SORT=-=-=-=\n");
 printf("\nHow many numbers do you want to enter?\n");
 scanf("%d", &total_count);
 	
-printf("Type %d inteiros numbers to be sorted.\n", total_count);
+printf("Type %d int numbers to be sorted.\n", total_count);
 
 // take the amount of numbers and store in positions
  for (count1 = 0; count1 < total_count; count1++){
